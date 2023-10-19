@@ -6,13 +6,16 @@ import EmployeesAddForm from "../employees-add-form/employees-add-form";
 
 import "./app.css";
 
+// Define the main App component
 function App() {
+  // Sample employee data
   const data = [
-    { name: "John C.", salary: 800, increase: false },
-    { name: "Alex M.", salary: 3000, increase: true },
-    { name: "Carl W.", salary: 5000, increase: false },
+    { name: "John C.", salary: 800, increase: false, id: 1 },
+    { name: "Alex M.", salary: 3000, increase: true, id: 2 },
+    { name: "Carl W.", salary: 5000, increase: false, id: 3 },
   ];
 
+  // Render the App component
   return (
     <div className="app">
       <AppInfo />
@@ -28,4 +31,5 @@ function App() {
   );
 }
 
+// Export the App component for use in other parts of your application
 export default App;
