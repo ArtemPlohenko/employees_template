@@ -11,7 +11,7 @@ const EmployeesList = ({ data }) => {
     return <EmployeesListItem key={id} {...itemProps} />;
   });
 
-  console.log(elements);
+  // console.log(elements);
 
   // Render the list of EmployeeListItem components inside a <ul> element.
   return <ul className="app-list list-group">{elements}</ul>;
