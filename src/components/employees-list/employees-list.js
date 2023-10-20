@@ -3,12 +3,12 @@ import EmployeesListItem from "../employees-list-item/employees-list-item";
 import "./employees-list.css";
 
 // This is the EmployeesList component that receives data as a prop.
-const EmployeesList = ({ data }) => {
+const EmployeesList = ({ data, onDelete }) => {
   // Map through the data array to create a list of EmployeeListItem components.
   const elements = data.map((item) => {
     const { id, ...itemProps } = item;
     // Pass the item properties as individual props to EmployeesListItem component.
-    return <EmployeesListItem key={id} {...itemProps} />;
+    return <EmployeesListItem key={id} {...itemProps} onDelete={() => onDelete(id)} />;
   });
 
   // console.log(elements);

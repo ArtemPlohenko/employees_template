@@ -5,13 +5,17 @@ import "./employees-add-form.css";
 class EmployeesAddForm extends Component {
   constructor(props) {
     super(props);
+    // Initialize the component's initial state
     this.state = {
-      name: "",
-      salary: "",
+      name: "", // Field for employee's name
+      salary: "", // Field for employee's salary
     };
   }
 
+  // Function that gets called when values in the input fields change
   onValueChange = (e) => {
+    // Update the state with the changed value. e.target.name will be "name" or "salary"
+    // depending on which input field triggered the change, and e.target.value is the new value.
     this.setState({
       [e.target.name]: e.target.value,
     });
