@@ -1,24 +1,26 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import "./employees-list-item.css";
 
 class EmployeesListItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      increase: false,
-      rise: false,
+      increase: false, // Initialize the "increase" state as "false"
+      rise: false, // Initialize the "rise" state as "false"
     };
   }
 
+  // Event handler for the "Increase" button
   onIncrease = () => {
     this.setState(({ increase }) => ({
-      increase: !increase,
+      increase: !increase, // Toggle the "increase" state
     }));
   };
 
+  // Event handler for clicking on the label
   onRise = () => {
     this.setState(({ rise }) => ({
-      rise: !rise,
+      rise: !rise, // Toggle the "rise" state
     }));
   };
 
@@ -26,12 +28,13 @@ class EmployeesListItem extends Component {
     const { name, salary } = this.props;
     const { increase, rise } = this.state;
 
+    // Generate classes for styling the element based on the states
     let classNames = "list-group-item d-flex justify-content-between";
     if (increase) {
-      classNames += " increase";
+      classNames += " increase"; // Add the "increase" class when "increase" is true
     }
     if (rise) {
-      classNames += " like";
+      classNames += " like"; // Add the "like" class when "rise" is true
     }
 
     return (
