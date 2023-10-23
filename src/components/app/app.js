@@ -8,22 +8,20 @@ import EmployeesAddForm from "../employees-add-form/employees-add-form";
 
 import "./app.css";
 
-// Define the main App component
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // Sample employee data
       data: [
-        { name: "John C.", salary: 800, increase: false, id: 1 },
-        { name: "Alex M.", salary: 3000, increase: true, id: 2 },
-        { name: "Carl W.", salary: 5000, increase: false, id: 3 },
+        { name: "John C.", salary: 800, increase: false, rise: true, id: 1 },
+        { name: "Alex M.", salary: 3000, increase: true, rise: false, id: 2 },
+        { name: "Carl W.", salary: 5000, increase: false, rise: false, id: 3 },
       ],
     };
+    this.maxId = 4;
   }
 
   deleteItem = (id) => {
-    // console.log(id);
     this.setState(({ data }) => {
       return {
         data: data.filter((item) => item.id !== id),
@@ -31,8 +29,43 @@ class App extends Component {
     });
   };
 
+  addItem = (name, salary) => {
+    const newItem = {
+      name,
+      salary,
+      increase: false,
+      rise: false,
+      id: this.maxId++,
+    };
+    this.setState(({ data }) => {
+      const newArr = [...data, newItem];
+      return {
+        data: newArr,
+      };
+    });
+  };
+
+  onToggleIncrease = (id) => {
+    // console.log(`Increase this ${id}`);
+    this.setState(({ data }) => {
+      const index = data.findIndex((elem) => elem.id === id);
+
+      const old = data[index];
+      const newItem = { ...old, increase: !old.increase };
+
+      const newArr = [...data.slice(0, index), newItem, ...data.slice(index + 1)];
+
+      return {
+        data: newArr,
+      };
+    });
+  };
+
+  onToggleRise = (id) => {
+    console.log(`Rise this ${id}`);
+  };
+
   render() {
-    // Render the App component
     return (
       <div className="app">
         <AppInfo />
@@ -42,12 +75,16 @@ class App extends Component {
           <AppFilter />
         </div>
 
-        <EmployeesList data={this.state.data} onDelete={this.deleteItem} />
-        <EmployeesAddForm />
+        <EmployeesList
+          data={this.state.data}
+          onDelete={this.deleteItem}
+          onToggleIncrease={this.onToggleIncrease}
+          onToggleRise={this.onToggleRise}
+        />
+        <EmployeesAddForm onAdd={this.addItem} />
       </div>
     );
   }
 }
 
-// Export the App component for use in other parts of your application
 export default App;
