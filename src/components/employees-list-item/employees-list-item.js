@@ -3,13 +3,12 @@ import "./employees-list-item.css";
 const EmployeesListItem = (props) => {
   const { name, salary, onDelete, onToggleProp, increase, rise } = props;
 
-  // Generate classes for styling the element based on the states
   let classNames = "list-group-item d-flex justify-content-between";
   if (increase) {
-    classNames += " increase"; // Add the "increase" class when "increase" is true
+    classNames += " increase";
   }
   if (rise) {
-    classNames += " like"; // Add the "like" class when "rise" is true
+    classNames += " like";
   }
 
   return (
